@@ -4,4 +4,4 @@ Hola! Somo el grupo A y este es nuestro segundo proyecto.
 
 #Desarrolladores 👽 web Full Stack Developers 👾 
 
-<img src="https://github.com/mouredev/mouredev/blob/master">
+<a src="./IMG_NodeJs_.png" alt="Node">
