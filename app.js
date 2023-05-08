@@ -17,12 +17,14 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 
-//Llamamos a la función que establece las rutas
-
-setRoutes(app);
+// const createDb = require("./src/database/createDb");
 
 //Establecemos conexión a la base de datos
 getConnection();
+
+//Llamamos a la función que establece las rutas
+
+setRoutes(app);
 
 // Escuchar en el puerto 3000
 app.listen(3000, () => {

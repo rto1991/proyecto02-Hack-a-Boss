@@ -2,6 +2,7 @@
 
 const express = require("express");
 const jwt = require("jsonwebtoken");
+const getConnection = require("../../database/dB");
 
 // Configurar express para que pueda procesar solicitudes JSON y definimos rutas
 function setRoutes(app) {
