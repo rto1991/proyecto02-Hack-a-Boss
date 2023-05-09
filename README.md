@@ -79,6 +79,16 @@ con Json, distintos modulos de Node, asi como distintos controllers y middleware
 En este caso se desarrolló mediante conexion local para pruebas y VPS para el codigo
 colaborativo en la BBDD.
 
+# ---- Enlaces de interés ----
+
+- Bcrypt: https://www.npmjs.com/package/bcrypt
+
+- Sendgrid: https://www.npmjs.com/package/@sendgrid/mail
+
+- Uuid: https://www.npmjs.com/package/uuid
+
+- Joi: https://www.npmjs.com/package/joi?activeTab=readme
+
 
 # ---- Tecnologías empleadas ----
 
