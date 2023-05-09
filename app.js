@@ -5,7 +5,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const chalk = require('chalk');
-const { newUser, getUser, loginController } = require('./src/controllers/users/indexs');
+const { newUser, getUser, loginController } = require('./src/controllers/users');
 const { listFiles, newCarpet, deleteFile} = require('./src/controllers/files');
 const app = express();
 // este es el primer middleware por donde pasa
