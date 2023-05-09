@@ -9,7 +9,7 @@ const getUserEmail = async (email) => {
     try {
         connection = await getConnection();
 
-        // aqui debo incertar el INNER JOIN para mostrar datos y archivos del id
+        // aqui debo insertar el INNER JOIN para mostrar datos y archivos del id
         const [result] = await connection.query(`
         SELECT id, email, name, avatar, role, password
         FROM probando p
