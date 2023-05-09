@@ -7,19 +7,20 @@ const morgan = require('morgan');
 const chalk = require('chalk');
 const { newUser, getUser, loginController } = require('./src/controllers/users');
 const { listFiles, newCarpet, deleteFile} = require('./src/controllers/files');
+const { validateUser } = require('./src/middlewares/validateUser');
 const app = express();
 // este es el primer middleware por donde pasa
 app.use(morgan('dev'));
 app.use(express.json());
 
 // Controllers user
-app.post('/user', newUser);
-app.post('/login', loginController);
-app.get('/:id', getUser);
+app.post('/user', newUser); // listo
+app.post('/login', loginController); // listo
+app.get('/login/:id', getUser); 
 
 // Controllers files
 app.get('/user/list', listFiles);
-app.post('/', newCarpet);
+app.post('/', validateUser, newCarpet); /* en vías de desarrollo */
 app.delete('/file/id', deleteFile);
 
 // Middleware para rutas no definidas

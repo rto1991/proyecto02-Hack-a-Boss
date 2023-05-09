@@ -2,6 +2,8 @@
 
 const newCarpet = async (req, res, next) => {
     try {
+        console.log(req.headers);
+        
         res.send({
             status: 'error',
             message: 'En pruebas'

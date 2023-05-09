@@ -26,20 +26,25 @@ const loginController = async (req, res, next) =>{
         // Creo el payload del token (como mostrará esta data el json)
         const payload = { id: user.id };
 
-        const token = jwt.sign(payload, process.env.SECRET, {
-            expiresIn: '1h',
-        })
-        
+        if (passwordValidate) {
+            const token = jwt.sign(payload, process.env.SECRET, {
+                expiresIn: '1h',
+            })
+            
         // console.log(user);
         
         res.send({
             status: 'ok',
-            data: token
+            message: 'usuario validado correctamente', 
+            token: token
         })
+       
+    }
     } catch (error) {
         next(error)
     }
 };
+
 
 module.exports = {
     loginController,

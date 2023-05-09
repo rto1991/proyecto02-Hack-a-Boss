@@ -1,6 +1,6 @@
 #                                                       ⌬⎨☁️ Mi disco duro - ONLINE ☁️⎬⌬
 
-El siguiente proyecto está siendo desarrollado por los alumnos del grupo A del Bootcamp de
+El siguiente proyecto está siendo desarrollado por los alumnos del grupo A 📝 del Bootcamp de
 Desarrolladores web Full Stack 👾 ; en esta segunda fase del proyecto estaremos desarrollando
 el back-end de nuestra API, la cual se ejecuta mediante NodeJs, con lenguaje JavaScript y
 conexion a la base de datos con SQL.
@@ -12,37 +12,39 @@ con Json, distintos modulos de Node, asi como distintos controllers y middleware
 
      1- Se desarrrolla un servidor capaz de crear carpetas y almacenar archivos.
 
-     2- Se permitirá registrarse y loguearse a usuarios nuevos.
+     2- Se permitirá registrarse y loguearse a usuarios nuevos. ✅
 
      3- Se autoriza a las modificaciones de los perfiles registrados en algunos campos.
 
-     4- Se validan los perfiles mediante password y token.
+     4- Se validan los perfiles mediante password y token. ✅
 
-     5- Se agregan / borran archivos solo para perfiles registrados.
+     5- Se agregan / borran archivos solo para perfiles registrados. -- in process...
 
 
 ## Modulos, Endpoints y Middlewares.
-    - Creacion de middlewares
+    - Middlewares
         - Para verificacion de rutas desconocidas.
         - Validacion de errores.
 
-    - sha4
-    - validacion de token
-    - Envío de email con codigo de validacion:
-        - Para ello instalamos el modulo @sendgrid/mail
-
-    - Endpoints creados en Postman:
+    - Endpoints:
         - POST:
-            - /         (Esta por definirse)...
-            - /user     (Permite el registro del usuario - falta añadir confirmacion email ✅)
-            - /login    (Permite el login de usuarios registrados - (En desarrollo)
+            - /         (Permite agregar archivos a usuarios validados)
+            - /user     (Permite el registro del usuario - email en pruebas ✅)
+            - /login    (Permite el login de usuarios registrados con validación de token ✅) 
             
         - GET:
             - /user/id   (Permite la modificacion de los datos del usuario ✅)
             - /user/list (Permite listar los archivos del usuario)
 
         - DELETE
-            - /file/id    (Permite eliminar los archivos del isuario)
+            - /file/id    (Permite eliminar los archivos del usuario)
+
+    - sha4
+    - validacion de token
+    - Envío de email con codigo de validacion:
+        - Para ello instalamos el modulo @sendgrid/mail
+
+    
 
     - Módulos instalados para el funcionamiento del servidor
         - Desarrollador.
