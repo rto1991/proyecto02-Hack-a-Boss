@@ -5,6 +5,7 @@ require("dotenv").config();
 const { setRoutes } = require("./src/controllers/user/endPoints");
 const getConnection = require("./src/database/dB");
 const morgan = require("morgan");
+const { userExist } = require("./src/middelwares/userExists");
 
 // Inicializar la aplicación de Express
 const app = express();
@@ -25,6 +26,9 @@ getConnection();
 //Llamamos a la función que establece las rutas
 
 setRoutes(app);
+
+//Middleware que comprueba si existe usuario
+// userExist(); DA ERROR EN EL ARCHIVO linea 7 (req.params)
 
 // Escuchar en el puerto 3000
 app.listen(3000, () => {

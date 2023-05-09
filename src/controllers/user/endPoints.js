@@ -3,6 +3,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const getConnection = require("../../database/dB");
+const sendMail = require("../../service/sendMail");
 
 // Configurar express para que pueda procesar solicitudes JSON y definimos rutas
 function setRoutes(app) {
@@ -83,5 +84,67 @@ function setRoutes(app) {
       res.status(500).json({ error: "Error interno del servidor" });
     }
   });
+
+  //Ruta para recuperacion de contraseña
+  app.post("/lostPassword", async (req, res) => {
+    try {
+      const connection = await getConnection();
+      const { email } = req.body;
+      if (!email) return res.status(400).send("Faltan credenciales");
+
+      //Comprobar que el email existe ne la base de datos
+      const [rows] = await connection.query(
+        ` SELECT id
+          FROM users
+          WHERE email=?        
+        `,
+        [email]
+      );
+
+      if (rows.length === 0)
+        return res.status(404).send("No hay usuario registrado con ese email");
+
+      //Generamos código de recuperación
+      const { v4: uuidv4 } = require("uuid");
+      const recoverCode = uuidv4();
+
+      //Actualizamos la base de datos
+
+      await connection.query(
+        `
+        UPDATE users
+        SET recoverCode=?, lastAuthUpdate= ?
+        WHERE email=?
+        `,
+        [recoverCode, new Date(), email]
+      );
+
+      //Enviamos el código por email
+
+      const lostMailBody = `
+      Se solitó el cambio de contraseña para el usuario registrado con este email en mycloudDrive. El código de 
+      recuperación es: ${recoverCode} .
+      Si no lo has solicitado puedes hacer login con tu contraseña habitual.
+      `;
+
+      const sendGridMail = require("../../service/sendGridMail");
+      await sendGridMail(
+        email,
+        "Cambio de contraseña en mycloudDrive",
+        lostMailBody
+      );
+
+      connection.release();
+
+      res.status(200).send({
+        status: "ok",
+        message: "Email enviado",
+      });
+    } catch (error) {
+      console.log(error);
+      res.send(error);
+    }
+  });
 }
+
 module.exports = { setRoutes };
