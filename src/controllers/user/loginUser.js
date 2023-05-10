@@ -12,7 +12,7 @@ const loginUser = async (req, res) => {
     //comprobar que exista el usuario
     const [user] = await connect.query(
       `
-            SELECT id, role, active
+            SELECT id, role, active, currentFolder_id
             FROM users
             WHERE email = ? AND password = SHA2(?, 512)
             `,
@@ -41,6 +41,7 @@ const loginUser = async (req, res) => {
       data: {
         token,
       },
+      info: info,
     });
     connect.release();
   } catch (error) {
