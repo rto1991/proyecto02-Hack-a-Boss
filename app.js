@@ -1,36 +1,24 @@
-"use strict";
-
 const express = require("express");
-require("dotenv").config();
-const { setRoutes } = require("./src/controllers/user/endPoints");
-const getConnection = require("./src/database/dB");
+const path = require("path");
 const morgan = require("morgan");
-const { userExist } = require("./src/middelwares/userExists");
+const fileUpolad = require("express-fileupload");
+const cors = require("cors");
 
-// Inicializar la aplicación de Express
 const app = express();
 
-//Middleware para manejar JSON
-
-app.use(express.json());
-
-// Iniciamos morgan
-
+//use middlewares
+app.use(cors());
 app.use(morgan("dev"));
+app.use(express.json());
+app.use(fileUpolad());
 
-// const createDb = require("./src/database/createDb");
+//declare static folder
+const staticDir = path.join(__dirname, "./src/uploads");
 
-//Establecemos conexión a la base de datos
-getConnection();
+app.use(express.static(staticDir));
 
-//Llamamos a la función que establece las rutas
+//use routes
+const userRouter = require("./src/routes/userRoutes");
+app.use(userRouter);
 
-setRoutes(app);
-
-//Middleware que comprueba si existe usuario
-// userExist(); DA ERROR EN EL ARCHIVO linea 7 (req.params)
-
-// Escuchar en el puerto 3000
-app.listen(3000, () => {
-  console.log("Servidor iniciado en el puerto 3000");
-});
+app.listen(3000, () => console.log("Servidor escuchando en puerto 3000"));

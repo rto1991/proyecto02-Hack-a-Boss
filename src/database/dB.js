@@ -1,27 +1,22 @@
-"use stricit";
-
 const mysql = require("mysql2/promise");
+
 require("dotenv").config();
 
-// Configuración de la conexión a la base de datos
 const { HOST, USER, PASSWORD, DATABASE } = process.env;
 
-const pool = mysql.createPool({
-  host: HOST,
-  user: USER,
-  password: PASSWORD,
-  database: DATABASE,
-});
+let pool;
 
-// Función para obtener la conexión a la base de datos
-async function getConnection() {
-  try {
-    const connection = await pool.getConnection();
-    return connection;
-  } catch (error) {
-    console.error("Error al obtener la conexión a la base de datos", error);
-    throw error;
+async function getDB() {
+  if (!pool) {
+    pool = mysql.createPool({
+      connectionLimit: 10,
+      host: HOST,
+      user: USER,
+      password: PASSWORD,
+      database: DATABASE,
+    });
   }
+  return await pool.getConnection();
 }
 
-module.exports = getConnection;
+module.exports = getDB;
