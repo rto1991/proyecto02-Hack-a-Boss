@@ -19,7 +19,7 @@ const sendMail = async (to, subject, body) => {
     };
     await sendGridMail.send(message);
   } catch (error) {
-    console.log("Error en el envió del email");
+    console.log("Error en el envió del email", error);
   }
 };
 

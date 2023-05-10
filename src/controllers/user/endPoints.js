@@ -93,7 +93,7 @@ function setRoutes(app) {
       if (!email) return res.status(400).send("Faltan credenciales");
 
       //Comprobar que el email existe ne la base de datos
-      const [rows] = await connection.query(
+      const [user] = await connection.query(
         ` SELECT id
           FROM users
           WHERE email=?        
@@ -101,7 +101,7 @@ function setRoutes(app) {
         [email]
       );
 
-      if (rows.length === 0)
+      if (user.length === 0)
         return res.status(404).send("No hay usuario registrado con ese email");
 
       //Generamos código de recuperación
@@ -127,7 +127,7 @@ function setRoutes(app) {
       Si no lo has solicitado puedes hacer login con tu contraseña habitual.
       `;
 
-      const sendGridMail = require("../../service/sendGridMail");
+      const sendGridMail = require("../../service/sendMail");
       await sendGridMail(
         email,
         "Cambio de contraseña en mycloudDrive",
