@@ -34,6 +34,7 @@ const loginController = async (req, res, next) =>{
         // console.log(user);
         
         res.send({
+            id: user.id,
             status: 'ok',
             message: 'usuario validado correctamente', 
             token: token

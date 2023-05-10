@@ -28,13 +28,13 @@ con Json, distintos modulos de Node, asi como distintos controllers y middleware
 
     - Endpoints:
         - POST:
-            - /         (Permite agregar archivos a usuarios validados)
+            - /         (Permite agregar archivos a usuarios validados - de momento sólo crea la carpeta con        validacion token y un id valido)
             - /user     (Permite el registro del usuario - email en pruebas ✅)
             - /login    (Permite el login de usuarios registrados con validación de token ✅) 
             
         - GET:
-            - /user/id   (Permite la modificacion de los datos del usuario ✅)
-            - /user/list (Permite listar los archivos del usuario)
+            - /login/id   (Permite la modificacion de los datos del usuario - de momento solo lista la información)
+            - /id/list (Permite listar los archivos del usuario)
 
         - DELETE
             - /file/id    (Permite eliminar los archivos del usuario)
@@ -47,15 +47,15 @@ con Json, distintos modulos de Node, asi como distintos controllers y middleware
     
 
     - Módulos instalados para el funcionamiento del servidor
-        - Desarrollador.
         - Eslint.
         - Prettier.
-        - Conexion a Mysql
+        - Mysql
         - Chalk
         - Express
         - Morgan
         - Json webToken
         - Bcrypt
+        - Nodemon
 
 
 
@@ -75,6 +75,10 @@ con Json, distintos modulos de Node, asi como distintos controllers y middleware
         - USER.
         - PASSWORD.
         - DATABASSE.
+        - SECRET.
+        - PUBLIC_HOST.
+        - SENDGRID_API_KEY.
+        - SENDGRID_FROM.
 
 En este caso se desarrolló mediante conexion local para pruebas y VPS para el codigo
 colaborativo en la BBDD.

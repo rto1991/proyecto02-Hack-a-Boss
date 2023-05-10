@@ -11,17 +11,17 @@ const { validateUser } = require('./src/middlewares/validateUser');
 const app = express();
 // este es el primer middleware por donde pasa
 app.use(morgan('dev'));
-app.use(express.json());
+app.use(express.json());  
 
 // Controllers user
-app.post('/user', newUser); // listo
-app.post('/login', loginController); // listo
-app.get('/login/:id', getUser); 
+app.post('/user', newUser); // listo ✅ (Permite el registro del usuario - email en pruebas)
+app.post('/login', loginController); // listo ✅ (Permite el login de usuarios registrados con validación de token)
+app.get('/login/:id', getUser); // (Permite la modificacion de los datos del usuario - de momento solo lista la información)
 
 // Controllers files
-app.get('/user/list', listFiles);
-app.post('/', validateUser, newCarpet); /* en vías de desarrollo */
-app.delete('/file/id', deleteFile);
+app.get('/id/list', listFiles); // (Permite listar los archivos del usuario)
+app.post('/', validateUser, newCarpet); /* en vías de desarrollo */ // (Permite agregar archivos a usuarios validados)
+app.delete('/file/id', deleteFile); // (Permite eliminar los archivos del usuario)
 
 // Middleware para rutas no definidas
 app.use((req, res) => {

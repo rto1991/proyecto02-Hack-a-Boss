@@ -11,7 +11,7 @@ const getUserId = async (id) => {
 
         // aqui debo incertar el INNER JOIN para mostrar datos y archivos del id
         const [result] = await connection.query(`
-        SELECT id, email, name, avatar, role
+        SELECT id, email, name, avatar, role, lastAuthUpdate
         FROM probando p
         WHERE id=?
         `,
