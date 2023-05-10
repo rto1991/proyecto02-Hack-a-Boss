@@ -1,8 +1,0 @@
-HOST=127.0.0.1
-USERS=root
-PASSWORD=root
-DATABASE=prueba
-SECRET=prueba
-PUBLIC_HOST=http://localhost:3000/user
-SENDGRID_API_KEY=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
-SENDGRID_FROM=joffreantonioariasmarquez@gmail.com
