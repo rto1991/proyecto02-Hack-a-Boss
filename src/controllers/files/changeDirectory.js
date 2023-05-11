@@ -30,8 +30,8 @@ const changeDirectory = async (req, res) => {
       //queremos movernos a un directorio, obtener lista de carpetas en este directorio
       const [dirList] = await connect.query(
         `
-          SELECT f.filename as 'File Name' FROM files f INNER JOIN users u ON f.parent_dir_id = u.currentFolder_id WHERE f.id_user = ? and f.parent_dir_id = ? and is_folder = 1`,
-        [idUser, pathUser[0].id]
+          SELECT f.filename as 'File Name' FROM files f INNER JOIN users u ON f.parent_dir_id = u.currentFolder_id WHERE f.id_user = ? and f.parent_dir_id = ? and is_folder = 1 and f.filename = ?`,
+        [idUser, pathUser[0].id, destinationDirectory]
       );
 
       if (dirList.length === 0) {
