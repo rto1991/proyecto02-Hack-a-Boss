@@ -1,4 +1,5 @@
 const getDB = require("../../database/db");
+const fs = require("fs/promises");
 
 const postUser = async (req, res) => {
   try {
@@ -39,6 +40,35 @@ const postUser = async (req, res) => {
       [mail, pwd, regCode]
     );
 
+    //crear su carpeta personal
+
+    let userId = users.insertId; //obtenemos el id de usuario de la instancia USERS
+    //creamos el registro en la BD del fichero inicial de la carpeta ROOT
+    const [files] = await connect.query(
+      `
+    INSERT INTO files (id_user,date_add,date_upd,fileDescription, fileName, is_folder, filePath) VALUES (?,?,?,?,?,?,?)
+    `,
+      [
+        userId,
+        new Date(),
+        new Date(),
+        "Carpeta Root",
+        "/",
+        1,
+        process.env.ROOT_DIR + userId,
+      ]
+    );
+
+    //creamos la carpeta física en el disco en el direcotorio estático
+    await fs.mkdir(process.env.ROOT_DIR + userId);
+
+    let fileId = files.insertId; // obtenemos la ID de fila insertada en la la tabla files, pues necesitamos dicha ID para actualizar el campo currentFolder en la tabla users
+    await connect.query(`UPDATE users SET currentFolder_id=? WHERE id=?`, [
+      fileId,
+      userId,
+    ]);
+
+    //liberamos la conexión usada
     connect.release();
 
     return res.status(200).send({

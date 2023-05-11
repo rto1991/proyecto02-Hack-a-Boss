@@ -25,6 +25,6 @@ router.post("/users/login", loginUser); // login *PROBADO*
 router.patch("/users/changePassword/:id", modifyPwd); //modificar contraseña *PROBADO*
 router.get("/users/validate/:regCode", validateUser); //validar nuevo usuario *PROBADO*
 router.post("/users/recoverPassword", recorverUserPassword); //solicitar código de recuperación por contraseña olvidada *probado*
-router.post("/users/resetPassword", resetUserPassword); //canjear el código de recuperación por nueva contraseña *probado*
+router.post("/users/resetPassword", resetUserPassword); //canjear el código de recuperación por nueva contraseña *probadp*
 
 module.exports = router;
