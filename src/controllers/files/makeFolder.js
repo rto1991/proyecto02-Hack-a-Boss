@@ -1,3 +1,5 @@
+"use strict";
+
 const getDB = require("../../database/db");
 const fs = require("fs/promises");
 const path = require("path");
@@ -59,7 +61,9 @@ const makeFolder = async (req, res) => {
     );
 
     //creamos físicamente el fichero
-    await fs.mkdir(process.env.ROOT_DIR + idUser + currentPath + folderName);
+    await fs.mkdir(
+      process.env.ROOT_DIR + "\\" + idUser + currentPath + folderName
+    );
 
     //enviamos respuesta de que la operación finalizó correctamente
     res
