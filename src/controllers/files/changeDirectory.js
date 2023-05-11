@@ -16,7 +16,6 @@ const changeDirectory = async (req, res) => {
   try {
     const userInfo = req.userInfo;
     const { destinationDirectory } = req.params;
-    console.log(destinationDirectory);
     const idUser = userInfo.id;
     const connect = await getDB();
     //obtenemos el path actual donde se encuentra el usuario
