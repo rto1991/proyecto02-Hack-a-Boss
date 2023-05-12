@@ -10,6 +10,7 @@ const getCurrentFolder = require("./getCurrentFolder");
 const listDirectory = require("./listDirectory");
 const changeDirectory = require("./changeDirectory");
 const deleteDirectory = require("./deleteDirectory");
+const renameDirectory = require("./renameDirectory");
 
 module.exports = {
   makeFolder,
@@ -17,4 +18,5 @@ module.exports = {
   listDirectory,
   changeDirectory,
   deleteDirectory,
+  renameDirectory,
 };
