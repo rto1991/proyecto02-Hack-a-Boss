@@ -14,6 +14,7 @@ const {
   changeDirectory,
   deleteDirectory,
   renameDirectory,
+  uploadFile,
 } = require("../controllers/files");
 
 //estos middles nos hará falta para operar con los ficheros ya que los usuarios han de estar logueados para manejar las rutas
@@ -28,5 +29,6 @@ router.get("/dir", isUser, listDirectory);
 router.get("/cd/:destinationDirectory", isUser, changeDirectory);
 router.get("/rd/:directoryToDelete", isUser, deleteDirectory);
 router.get("/renameDirectory/:oldName/:newName", isUser, renameDirectory);
+router.post("/uploadFile", isUser, uploadFile);
 
 module.exports = router;
