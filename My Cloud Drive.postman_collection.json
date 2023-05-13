@@ -259,15 +259,16 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/makeFolder/fotos de boda",
+							"raw": "http://localhost:3000/renameDirectory/fotitos/fotos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"makeFolder",
-								"fotos de boda"
+								"renameDirectory",
+								"fotitos",
+								"fotos"
 							]
 						}
 					},
@@ -276,7 +277,7 @@
 				{
 					"name": "Subir un fichero",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "authorization",
@@ -284,16 +285,25 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "uploadedFile",
+									"type": "file",
+									"src": "/C:/Users/Administrador/Pictures/MOTO1.jpg"
+								}
+							]
+						},
 						"url": {
-							"raw": "http://localhost:3000/makeFolder/fotos de boda",
+							"raw": "http://localhost:3000/uploadFile",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"makeFolder",
-								"fotos de boda"
+								"uploadFile"
 							]
 						}
 					},
@@ -311,14 +321,14 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/makeFolder/fotos de boda",
+							"raw": "http://localhost:3000/rd/fotos de boda",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"makeFolder",
+								"rd",
 								"fotos de boda"
 							]
 						}
@@ -337,7 +347,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/cd/..",
+							"raw": "http://localhost:3000/cd/fotos",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -345,7 +355,7 @@
 							"port": "3000",
 							"path": [
 								"cd",
-								".."
+								"fotos"
 							]
 						}
 					},
