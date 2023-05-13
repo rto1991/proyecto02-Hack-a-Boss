@@ -1,216 +1,407 @@
 {
 	"info": {
-		"_postman_id": "3c973eed-ee0a-4002-9c0a-0f850cc94c4a",
+		"_postman_id": "425c9127-4d2d-4322-b4e4-f39233c0ac76",
 		"name": "My Cloud Drive",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "8722607"
+		"_exporter_id": "8722607",
+		"_collection_link": "https://speeding-equinox-833319.postman.co/workspace/Team-Workspace~fa8141d8-78ee-4d94-8f20-87da6ee52b52/collection/8722607-425c9127-4d2d-4322-b4e4-f39233c0ac76?action=share&creator=8722607&source=collection_link"
 	},
 	"item": [
 		{
-			"name": "Registro de nuevo Usuario",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"mail\": \"informaticabocanegra@gmail.com\",\r\n    \"pwd\": \"T0d0p3rr4$\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Users",
+			"item": [
+				{
+					"name": "Registro de nuevo Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"informaticabocanegra@gmail.com\",\r\n    \"pwd\": \"T0d0p3rr4$\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/newUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"newUser"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/newUser",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"newUser"
-					]
+				{
+					"name": "Login de usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"informaticabocanegra@gmail.com\",\r\n    \"pwd\": \"T0d0p3rr4$\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Datos de un usuario",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2ODM0OTA0MDgsImV4cCI6MTY4MzU3NjgwOH0.Xk0doL0I7JtIvod1X0koY5VIBk_cdTRS5iBnpAQnQDw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/user/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar datos de usuario",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2ODM0OTA0MDgsImV4cCI6MTY4MzU3NjgwOH0.Xk0doL0I7JtIvod1X0koY5VIBk_cdTRS5iBnpAQnQDw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mario\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/updateUser/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"updateUser",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar Contraseña Usuario",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"informaticabocanegra@gmail.com\",\r\n    \"oldPwd\": \"T0d0p3rr4$\",\r\n    \"newPwd\": \"T0d0p3rr4k4$\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/changePassword/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"changePassword",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generar código de recuperación de password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"informaticabocanegra@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/recoverPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"recoverPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resetear Password con código de recuperación",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recoverCode\" : \"fb6e6858-275b-4194-b067-1407751b69b53\",\r\n    \"newPassword\" : \"T0d0p3rr4$\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/resetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"resetPassword"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Login de usuario",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"mail\": \"informaticabocanegra@gmail.com\",\r\n    \"pwd\": \"T0d0p3rr4k4$\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Files",
+			"item": [
+				{
+					"name": "Crear un directorio",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/makeFolder/fotos de boda",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"makeFolder",
+								"fotos de boda"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/users/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"users",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Datos de un usuario",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2ODM0OTA0MDgsImV4cCI6MTY4MzU3NjgwOH0.Xk0doL0I7JtIvod1X0koY5VIBk_cdTRS5iBnpAQnQDw",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:3000/user/10",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"user",
-						"10"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Actualizar datos de usuario",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2ODM0OTA0MDgsImV4cCI6MTY4MzU3NjgwOH0.Xk0doL0I7JtIvod1X0koY5VIBk_cdTRS5iBnpAQnQDw",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Mario\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Renombrar un Directorio",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/makeFolder/fotos de boda",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"makeFolder",
+								"fotos de boda"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/updateUser/10",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"updateUser",
-						"10"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Cambiar Contraseña Usuario",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"mail\": \"informaticabocanegra@gmail.com\",\r\n    \"oldPwd\": \"T0d0p3rr4$\",\r\n    \"newPwd\": \"T0d0p3rr4k4$\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Subir un fichero",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/makeFolder/fotos de boda",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"makeFolder",
+								"fotos de boda"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/users/changePassword/10",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"users",
-						"changePassword",
-						"10"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Generar código de recuperación de password",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"mail\": \"informaticabocanegra@gmail.com\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Borrar un directorio",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/makeFolder/fotos de boda",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"makeFolder",
+								"fotos de boda"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/users/recoverPassword",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"users",
-						"recoverPassword"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Resetear Password con código de recuperación",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"recoverCode\" : \"fb6e6858-275b-4194-b067-1407751b69b53\",\r\n    \"newPassword\" : \"T0d0p3rr4$\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Cambiar de directorio",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/cd/..",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cd",
+								".."
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/users/resetPassword",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"users",
-						"resetPassword"
-					]
+				{
+					"name": "Saber directorio actual",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/getCurrentFolder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getCurrentFolder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar directorio actual",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/dir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"dir"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
