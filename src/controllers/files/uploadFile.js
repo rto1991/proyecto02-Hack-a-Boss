@@ -36,6 +36,14 @@ const uploadFile = async (req, res) => {
       pathUser[0].filePath +
       uploadedFile.name;
 
+    //pero antes verificamos que no existe un fichero con exactamente el mismo nombre en el directorio
+
+    const [dirList] = await connect.query(
+      `
+      SELECT f.filename as 'File Name', if(f.is_folder=1,'Folder','File') as Type FROM files f INNER JOIN users u ON f.parent_dir_id = u.currentFolder_id WHERE f.id_user = ?`,
+      [idUser]
+    );
+
     uploadedFile.mv(uploadPath, async (err) => {
       if (err) {
         res.status(500).send("Error subiendo el fichero: " + err);
