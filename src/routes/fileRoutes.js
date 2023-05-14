@@ -17,6 +17,8 @@ const {
   moveFile,
   deleteFile,
   downloadFile,
+  renameFile,
+  moveToTrash,
 } = require("../controllers/files");
 
 //estos middles nos hará falta para operar con los ficheros ya que los usuarios han de estar logueados para manejar las rutas
@@ -34,5 +36,7 @@ router.get("/renameDirectory", isUser, renameDirectory);
 router.post("/moveFile", moveFile);
 router.delete("/files/:fileName", deleteFile);
 router.get("/download/:fileName", downloadFile);
+router.post("/files/:filesId", renameFile);
+router.post("/files/:parentDirId/:fileName/moveToTrash", moveToTrash);
 
 module.exports = router;
