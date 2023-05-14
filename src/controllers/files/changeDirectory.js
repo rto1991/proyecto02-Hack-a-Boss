@@ -66,7 +66,7 @@ const changeDirectory = async (req, res) => {
     } else {
       //usamos el parámetro ".." que hace subir un nivel
       //primero verificamos si no estamos en el ROOT del usuario
-      if (pathUser[0].filePath != "/") {
+      if (pathUser[0].fileName != "/") {
         //no estamos en top level, retroceder un directorio
         //el directorio al que hay que retroceder es el valor "parent_dir_id" del path actual del usuario, que debe ser distinto de 0 si el filePath es distinto a "/"
         //cambiamos el campo currentFolder_id de la tabla users

@@ -1,10 +1,8 @@
 {
 	"info": {
-		"_postman_id": "425c9127-4d2d-4322-b4e4-f39233c0ac76",
+		"_postman_id": "43e1feeb-3dd1-40cc-b283-f347bf7b002b",
 		"name": "My Cloud Drive",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "8722607",
-		"_collection_link": "https://speeding-equinox-833319.postman.co/workspace/Team-Workspace~fa8141d8-78ee-4d94-8f20-87da6ee52b52/collection/8722607-425c9127-4d2d-4322-b4e4-f39233c0ac76?action=share&creator=8722607&source=collection_link"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -233,7 +231,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/makeFolder/fotos de boda",
+							"raw": "http://localhost:3000/makeFolder/musica",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -241,7 +239,7 @@
 							"port": "3000",
 							"path": [
 								"makeFolder",
-								"fotos de boda"
+								"musica"
 							]
 						}
 					},
@@ -291,7 +289,7 @@
 								{
 									"key": "uploadedFile",
 									"type": "file",
-									"src": "/C:/Users/Administrador/Pictures/MOTO1.jpg"
+									"src": "/D:/Users/mario/Pictures/758470-2.jpg"
 								}
 							]
 						},
@@ -310,6 +308,78 @@
 					"response": []
 				},
 				{
+					"name": "Mover un fichero",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fileId\":\"36\",\r\n    \"destinationFolderName\": \"documentos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/moveFile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"moveFile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Descargar un Fichero",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fileId\":\"36\",\r\n    \"destinationFolderName\": \"documentos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/download/37",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"download",
+								"37"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Borrar un directorio",
 					"request": {
 						"method": "GET",
@@ -321,7 +391,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/rd/fotos de boda",
+							"raw": "http://localhost:3000/rd/musica",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -329,7 +399,33 @@
 							"port": "3000",
 							"path": [
 								"rd",
-								"fotos de boda"
+								"musica"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar un fichero",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/file/758470-2.jpg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"file",
+								"758470-2.jpg"
 							]
 						}
 					},
@@ -347,7 +443,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/cd/fotos",
+							"raw": "http://localhost:3000/cd/documentos",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -355,7 +451,7 @@
 							"port": "3000",
 							"path": [
 								"cd",
-								"fotos"
+								"documentos"
 							]
 						}
 					},

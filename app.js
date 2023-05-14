@@ -5,15 +5,16 @@ const fileUpolad = require("express-fileupload");
 const cors = require("cors");
 const app = express();
 
+//declare static folder
+const staticDir = path.join(__dirname, "src/uploads");
+app.use(express.static(staticDir));
+
 //use middlewares
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(fileUpolad());
 
-//declare static folder
-const staticDir = path.join(__dirname, "./src/uploads");
-app.use(express.static(staticDir));
 
 //use routes
 const userRouter = require("./src/routes/userRoutes");

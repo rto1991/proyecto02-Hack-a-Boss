@@ -12,6 +12,9 @@ const changeDirectory = require("./changeDirectory");
 const deleteDirectory = require("./deleteDirectory");
 const renameDirectory = require("./renameDirectory");
 const uploadFile = require("./uploadFile");
+const moveFile = require("./moveFile");
+const deleteFile = require("./deleteFile");
+const downloadfile = require("./downloadFile");
 
 module.exports = {
   makeFolder,
@@ -21,4 +24,7 @@ module.exports = {
   deleteDirectory,
   renameDirectory,
   uploadFile,
+  moveFile,
+  deleteFile,
+  downloadfile,
 };

@@ -1,5 +1,6 @@
 const getDB = require("../../database/db");
 const fs = require("fs/promises");
+const path = require("path");
 
 const postUser = async (req, res) => {
   try {
@@ -55,7 +56,7 @@ const postUser = async (req, res) => {
         "Carpeta Root",
         "/",
         1,
-        process.env.ROOT_DIR + userId,
+        path.join(process.env.ROOT_DIR,userId),
       ]
     );
 

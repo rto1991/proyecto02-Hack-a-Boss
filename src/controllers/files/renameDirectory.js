@@ -44,16 +44,15 @@ const renameDirectory = async (req, res) => {
     }
 
     //renombramos la carpeta en la BD
-    const newPath = folder[0].filePath.replace(folderName + "/", newName + "/");
     await connect.query(
-      "UPDATE files SET fileName = ?, filePath = ?, date_upd = ? WHERE id = ?",
-      [newName, newPath, new Date(), folder[0].id]
+      "UPDATE files SET fileName = ?, date_upd = ? WHERE id = ?",
+      [newName, new Date(), folder[0].id]
     );
 
     //renombramos la carpeta en el sistema de archivos
     await fs.rename(
-      path.join(process.env.ROOT_DIR, idUser.toString(), folder[0].filePath),
-      path.join(process.env.ROOT_DIR, idUser.toString(), newPath)
+      path.join(process.env.ROOT_DIR, idUser.toString(), folder[0].filePath,folderName),
+      path.join(process.env.ROOT_DIR, idUser.toString(), folder[0].filePath,newName)
     );
 
     //enviamos respuesta de que la operación finalizó correctamente

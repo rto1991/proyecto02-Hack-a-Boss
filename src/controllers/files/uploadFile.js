@@ -5,6 +5,7 @@ Controlador que se encargará de subir un fichero, el fichero vendrá por BODY e
 El campo que traerá el fichero en el form-data se llamará "uploadedFile";
 */
 const getDB = require("../../database/db");
+const path = require("path");
 
 const uploadFile = async (req, res) => {
   try {
@@ -20,7 +21,7 @@ const uploadFile = async (req, res) => {
     let uploadedFile;
     let uploadPath;
     let relativePath;
-    relativePath = process.env.ROOT_DIR + "/" + idUser + pathUser[0].filePath;
+    relativePath = path.join(pathUser[0].filePath,pathUser[0].fileName);
 
     //verificamos si viene ficheros
     if (!req.files || Object.keys(req.files).length === 0) {
@@ -29,12 +30,7 @@ const uploadFile = async (req, res) => {
 
     //subimos el fichero capturado por BODY
     uploadedFile = req.files.uploadedFile;
-    uploadPath =
-      process.env.ROOT_DIR +
-      "\\" +
-      idUser +
-      pathUser[0].filePath +
-      uploadedFile.name;
+    uploadPath = path.join(pathUser[0].filePath, pathUser[0].fileName, uploadedFile.name);
 
     //pero antes verificamos que no existe un fichero con exactamente el mismo nombre en el directorio
 

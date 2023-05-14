@@ -8,11 +8,11 @@ const getCurrentFolder = async (req, res) => {
     //obtenemos el path actual donde se encuentra el usuario
     const [pathUser] = await connect.query(
       `
-    SELECT f.filename FROM users u INNER JOIN files f ON f.id = u.currentFolder_id WHERE u.id = ?`,
+    SELECT f.fileName FROM users u INNER JOIN files f ON f.id = u.currentFolder_id WHERE u.id = ?`,
       [idUser]
     );
 
-    res.status(200).send(`El directorio actual es "${pathUser[0].filename}"`);
+    res.status(200).send(`El directorio actual es "${pathUser[0].fileName}"`);
   } catch (error) {
     console.log(error);
   }

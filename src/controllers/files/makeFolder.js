@@ -11,7 +11,7 @@ const makeFolder = async (req, res) => {
     const idUser = userInfo.id;
     const folderName = req.params.folderName; //aquí nos traemos el nombre de carpeta deseado
     const connect = await getDB();
-    const [user] = await connect.query(`SELECT * FROM users WHERE id = ?`, [
+    const [user] = await connect.query(`SELECT u.*, f.fileName FROM users u INNER JOIN files f ON f.id = u.currentFolder_id WHERE u.id = ?`, [
       idUser,
     ]);
     const currentFolder_id = user[0].currentFolder_id;
@@ -54,7 +54,7 @@ const makeFolder = async (req, res) => {
         new Date(),
         folderName,
         folderName,
-        currentPath + folderName + "/",
+        path.join( currentPath , currentFolder[0].fileName),
         1,
         currentFolder_id,
       ]
@@ -62,14 +62,14 @@ const makeFolder = async (req, res) => {
 
     //creamos físicamente el fichero
     await fs.mkdir(
-      process.env.ROOT_DIR + "\\" + idUser + currentPath + folderName
+      path.join(currentPath,currentFolder[0].fileName, folderName)
     );
 
     //enviamos respuesta de que la operación finalizó correctamente
     res
       .status(200)
       .send(
-        `El directorio ${folderName} se creó correctamente en la ruta ${currentPath}`
+        `El directorio ${folderName} se creó correctamente en la ruta ${user[0].fileName}`
       );
   } catch (error) {
     console.log(error);
