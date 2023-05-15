@@ -3,16 +3,22 @@
 const { getConnection } = require('./getConnection');
 
 const createFile = async (req, res, next) => {
-    
     const { id_probando, fileName, email } = req.body;   
     let connection;
     
     try {
         connection = await getConnection();
 
+        // aqui explota de momento
         await connection.query(
-            `INSERT INTO probando2 (id_probando, fileName) WHERE email=?`,
-            [id_probando, fileName, email]
+            `INSERT INTO probando2 (id_probando, fileName)
+            VALUES(?,?)`,
+            [id_probando, fileName]
+        );
+        await connection.query(
+            `INSERT INTO probando (email)
+            VALUES(?,?)`,
+            [email]
         );
 
         connection.release();
@@ -31,6 +37,7 @@ const createFile = async (req, res, next) => {
         res.send(error);
     }
 };
+
 
 module.exports = {
     createFile,

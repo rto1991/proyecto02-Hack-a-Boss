@@ -1,17 +1,19 @@
 'use strict';
 
 require('dotenv').config();
-
 const express = require('express');
 const morgan = require('morgan');
+const fileUpload = require('express-fileupload');
 const chalk = require('chalk');
 const { newUser, getUser, loginController } = require('./src/controllers/users');
 const { listFiles, newCarpet, deleteFile} = require('./src/controllers/files');
 const { validateUser } = require('./src/middlewares/validateUser');
+const { createFile } = require('./src/database/createFile');
 const app = express();
 // este es el primer middleware por donde pasa
 app.use(morgan('dev'));
-app.use(express.json());  
+app.use(express.json());
+app.use(fileUpload());
 
 // Controllers user
 app.post('/user', newUser); // listo ✅ (Permite el registro del usuario - email en pruebas)
@@ -20,7 +22,7 @@ app.get('/login/:id', getUser); // (Permite la modificacion de los datos del usu
 
 // Controllers files
 app.get('/id/list', listFiles); // (Permite listar los archivos del usuario)
-app.post('/', validateUser, newCarpet); /* en vías de desarrollo */ // (Permite agregar archivos a usuarios validados)
+app.post('/', validateUser, createFile, newCarpet); /* en vías de desarrollo */ // (Permite agregar archivos a usuarios validados)
 app.delete('/file/id', deleteFile); // (Permite eliminar los archivos del usuario)
 
 // Middleware para rutas no definidas

@@ -93,6 +93,10 @@ colaborativo en la BBDD.
 
 - Joi: https://www.npmjs.com/package/joi?activeTab=readme
 
+- Query: https://developer.mozilla.org/en-US/docs/Web/API/Permissions/query
+
+- Express-fileupload: https://www.npmjs.com/package/express-fileupload
+
 
 # ---- Tecnologías empleadas ----
 

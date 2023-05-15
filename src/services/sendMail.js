@@ -21,7 +21,7 @@ const sendMail = async (to, subject, body) => {
       };
       await sgEmail.send(msg);
     } catch (error) {
-      console.log('Error en invío de email',error);
+      console.log('Error en envío de email',error);
     }
   };
 
