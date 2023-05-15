@@ -15,6 +15,10 @@ const uploadFile = require("./uploadFile");
 const moveFile = require("./moveFile");
 const deleteFile = require("./deleteFile");
 const downloadfile = require("./downloadFile");
+const renameFile = require("./renameFile");
+const moveToTrash = require("./moveToTrash");
+const recoverFile = require("./recoverFile");
+const emptyTrash = require("./emptyTrash");
 
 module.exports = {
   makeFolder,
@@ -27,4 +31,8 @@ module.exports = {
   moveFile,
   deleteFile,
   downloadfile,
+  renameFile,
+  moveToTrash,
+  recoverFile,
+  emptyTrash,
 };

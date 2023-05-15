@@ -14,7 +14,7 @@ const downloadFile = async (req, res) => {
 
     // buscamos el archivo en la base de datos
     const [file] = await connect.query(
-      "SELECT * FROM files WHERE id = ? AND id_user = ?",
+      "SELECT * FROM files WHERE id = ? AND id_user = ? and in_recycle_bin = 0",
       [fileId, idUser]
     );
 
@@ -28,7 +28,9 @@ const downloadFile = async (req, res) => {
 
     // creamos un objeto con la URI para la descargar del fichero
     let downloadObject = {};
-    downloadObject = {"download url": fileUrl.pathToFileURL(path.join(filePath , fileName)) }
+    downloadObject = {
+      "download url": fileUrl.pathToFileURL(path.join(filePath, fileName)),
+    };
     res.status(200).send(downloadObject);
     //res.download(path.join(filePath , fileName));
   } catch (error) {
