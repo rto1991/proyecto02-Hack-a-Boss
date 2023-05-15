@@ -23,6 +23,7 @@ const {
 
 //estos middles nos hará falta para operar con los ficheros ya que los usuarios han de estar logueados para manejar las rutas
 const isUser = require("../middlewares/isUser");
+const emptyTrash = require("../controllers/files/emptyTrash");
 //const userExists = require("../middlewares/userExists");
 
 const router = express.Router();
@@ -33,10 +34,12 @@ router.get("/dir", isUser, listDirectory);
 router.get("/cd/:destinationDirectory", isUser, changeDirectory);
 router.get("/rd/:directoryToDelete", isUser, deleteDirectory);
 router.get("/renameDirectory", isUser, renameDirectory);
-router.post("/moveFile", moveFile);
-router.delete("/files/:fileName", deleteFile);
-router.get("/download/:fileName", downloadFile);
-router.post("/files/:filesId", renameFile);
-router.post("/files/:parentDirId/:fileName/moveToTrash", moveToTrash);
+router.post("/moveFile", isUser, moveFile);
+router.delete("/files/:fileName", isUser, deleteFile);
+router.get("/download/:fileName", isUser, downloadFile);
+router.post("/files/:filesId", isUser, renameFile);
+router.post("/files/:parentDirId/:fileName/moveToTrash", isUser, moveToTrash);
+router.delete("/emptyTrash/trash", isUser, emptyTrash);
+router.put("/recoverFile/:fileName/:parentDirID", isUser, recoverFile);
 
 module.exports = router;

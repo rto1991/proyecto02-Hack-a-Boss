@@ -1,7 +1,5 @@
 "use strict";
 
-"use strict";
-
 const getDB = require("../../database/db");
 const fs = require("fs/promises");
 const path = require("path");
