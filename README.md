@@ -1,4 +1,3 @@
-###############################################################![105273959](https://github.com/rto1991/proyecto02-Hack-a-Boss/assets/123706095/f2639fa5-e410-4ad5-b59e-98d9b24cf7e1)
 
 
 #                                                       ⌬⎨☁️ Mi disco duro - ONLINE ☁️⎬⌬
@@ -125,6 +124,9 @@ Para el funcionamiento de todo el servidor, hará falta también otros datos ind
 # <img width="139" alt="IMG_MySql_" src="https://user-images.githubusercontent.com/123706095/236196551-452673a1-6f0e-4693-8c37-8fbbb3067788.png">
 
 # [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white&labelColor=101010)]()
+
+
+##########################################################################![105273959](https://github.com/rto1991/proyecto02-Hack-a-Boss/assets/123706095/f2639fa5-e410-4ad5-b59e-98d9b24cf7e1)
 
 
 
