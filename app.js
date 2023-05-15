@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
 const chalk = require('chalk');
 const { newUser, getUser, loginController } = require('./src/controllers/users');
-const { listFiles, newCarpet, deleteFile} = require('./src/controllers/files');
+const { listFiles, newCarpet, deleteFile, uploadFileAnonimous } = require('./src/controllers/files');
 const { validateUser } = require('./src/middlewares/validateUser');
 const { createFile } = require('./src/database/createFile');
 const app = express();
@@ -24,6 +24,7 @@ app.get('/login/:id', getUser); // (Permite la modificacion de los datos del usu
 app.get('/id/list', listFiles); // (Permite listar los archivos del usuario)
 app.post('/', validateUser, createFile, newCarpet); /* en vías de desarrollo */ // (Permite agregar archivos a usuarios validados)
 app.delete('/file/id', deleteFile); // (Permite eliminar los archivos del usuario)
+app.post('/uploadFileAnonimous', uploadFileAnonimous); // Pemite la subida de ficheros mediante validación token sin registro
 
 // Middleware para rutas no definidas
 app.use((req, res) => {
