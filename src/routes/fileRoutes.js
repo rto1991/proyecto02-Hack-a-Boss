@@ -19,6 +19,8 @@ const {
   downloadFile,
   renameFile,
   moveToTrash,
+  emptyTrash,
+  recoverFile,
 } = require("../controllers/files");
 
 //estos middles nos hará falta para operar con los ficheros ya que los usuarios han de estar logueados para manejar las rutas
