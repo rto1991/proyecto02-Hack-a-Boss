@@ -17,7 +17,7 @@ const createFile = async (req, res, next) => {
         );
         await connection.query(
             `INSERT INTO probando (email)
-            VALUES(?,?)`,
+            VALUES(?)`,
             [email]
         );
 
