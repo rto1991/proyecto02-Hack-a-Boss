@@ -1,8 +1,10 @@
 {
 	"info": {
-		"_postman_id": "43e1feeb-3dd1-40cc-b283-f347bf7b002b",
+		"_postman_id": "cc522703-51bb-4ea1-813f-e67499c7ffe7",
 		"name": "My Cloud Drive",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8722607",
+		"_collection_link": "https://speeding-equinox-833319.postman.co/workspace/Team-Workspace~fa8141d8-78ee-4d94-8f20-87da6ee52b52/collection/8722607-cc522703-51bb-4ea1-813f-e67499c7ffe7?action=share&creator=8722607&source=collection_link"
 	},
 	"item": [
 		{
@@ -246,6 +248,31 @@
 					"response": []
 				},
 				{
+					"name": "Vaciar Papelera",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/emptyTrash",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"emptyTrash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Renombrar un Directorio",
 					"request": {
 						"method": "GET",
@@ -342,6 +369,40 @@
 					"response": []
 				},
 				{
+					"name": "Renombrar un fichero",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fileName\":\"factura_4660.pdf\",\r\n    \"newFileName\": \"factura_4660_renamed.pdf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/renameFile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"renameFile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Descargar un Fichero",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -374,6 +435,82 @@
 							"path": [
 								"download",
 								"37"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mover un fichero a la papelera",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/moveToTrash/factura_4660_renamed.pdf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"moveToTrash",
+								"factura_4660_renamed.pdf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar fichero de papelera",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/recoverFile/factura_4660_renamed.pdf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"recoverFile",
+								"factura_4660_renamed.pdf"
 							]
 						}
 					},
@@ -416,6 +553,10 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:3000/file/758470-2.jpg",
 							"protocol": "http",
