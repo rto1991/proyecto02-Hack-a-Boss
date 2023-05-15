@@ -5,87 +5,102 @@ Desarrolladores web Full Stack 👾 ; en esta segunda fase del proyecto estaremo
 el back-end de nuestra API, la cual se ejecuta mediante NodeJs, con lenguaje JavaScript y
 conexion a la base de datos con SQL.
 
-Desarrollaremos distintos Endpoints que iremos explicando en adelante con detalle, trabajaremos
-con Json, distintos modulos de Node, asi como distintos controllers y middlewares.
+Desarrollaremos distintos Endpoints que iremos explicando en adelante con detalle, se indicará así mismo los accesos a la BBDD y distintos datos necesarios en el .env para la configuración y funcionamiento del proyecto.
 
-#  ---- Alcance requerido del proyecto ----
+#  ---- Alcance requerido ----
 
-     1- Se desarrrolla un servidor capaz de crear carpetas y almacenar archivos.
+     1️⃣- Se desarrrolla un servidor capaz de crear carpetas y almacenar archivos.
 
-     2- Se permitirá registrarse y loguearse a usuarios nuevos. ✅
+     2️⃣- Se permitirá registrarse y loguearse a nuevos usuarios.
 
-     3- Se autoriza a las modificaciones de los perfiles registrados en algunos campos.
+     3️⃣- Se autoriza a las modificaciones de los perfiles registrados en algunos campos.
 
-     4- Se validan los perfiles mediante password y token. ✅
+     4️⃣- Se validan los perfiles mediante password y token.
 
-     5- Se agregan / borran archivos solo para perfiles registrados. -- in process...
+     5️⃣- Se agregan / borran archivos solo para perfiles registrados.
 
 
 ## Modulos, Endpoints y Middlewares.
     - Middlewares
-        - Para verificacion de rutas desconocidas.
-        - Validacion de errores.
+        - Para verificacion de rutas desconocidas. 🛑🛑🛑 no está en la main, PREGUNTAR. 🛑🛑🛑
 
     - Endpoints:
-        - POST:
-            - /         (Permite agregar archivos a usuarios validados - de momento sólo crea la carpeta con        validacion token y un id valido)
-            - /user     (Permite el registro del usuario - email en pruebas ✅)
-            - /login    (Permite el login de usuarios registrados con validación de token ✅) 
-            
-        - GET:
-            - /login/id   (Permite la modificacion de los datos del usuario - de momento solo lista la información)
-            - /id/list (Permite listar los archivos del usuario)
 
-        - DELETE
-            - /file/id    (Permite eliminar los archivos del usuario)
+        🔵 Users:
+            - GET ** /user/:id ➡️ Ver datos de usuarios logueados.
+            - POST ** /newUser ➡️ Registro de nuevo usuario. ** Acceso para usuarios anónimos.
+            - PATCH ** /updateUser/:id ➡️ Actualizar datos del usuario según su perfil.
+            - DELETE ** /deleteUser/:id ➡️ Soft delete de usuarios con permisos.
+            - POST ** /users/login ➡️ Login de usuarios registrados ** Acceso para usuarios anónimos.
+            - PATCH ** /users/changePassword/:id ➡️ Modificación de password.
+            - GET ** /users/validate/:regCode ➡️ Validación de usuarios registrados.
+            - POST ** /users/recoverPassword ➡️ Recuperación de password con validación token.
+            - POST ** /users/resetPassword ➡️ Modificación de token registrado para modificación de password.
 
-    - sha4
-    - validacion de token
-    - Envío de email con codigo de validacion:
-        - Para ello instalamos el modulo @sendgrid/mail
-
-    
+        🔵 Files:
+            - GET ** /makeFolder/:folderName ➡️ Creación de carpetas a usuarios validados.
+            - GET ** /getCurrentFolder ➡️ Nos indica el directorio en el cual nos encontramos ubicados.
+            - GET ** /dir ➡️ Listar todos los archivos contenidos en el usuario validado.
+            - GET ** /cd/:destinationDirectory ➡️ Valida y permite moverse por los directorios del usuario.
+            - GET ** /rd/:directoryToDelete ➡️ Borrado de directorios vacíos.
+            - GET ** /renameDirectory/:oldName/:newName ➡️ Modificación del nombre del directorio.
+            - POST ** /uploadFile ➡️ Subida de ficheros a usuarios registrados.
+            - POST ** /moveFile ➡️  Mover el archivo dentro de las carpetas de nuestro directorio.
+            - DELETE ** /file/:fileName ➡️ Borrado de ficheros contenidos en los directorios.
+            - GET ** /download/:fileId ➡️ Descarga del fichero seleccionado.
 
     - Módulos instalados para el funcionamiento del servidor
-        - Eslint.
-        - Prettier.
-        - Mysql
-        - Chalk
-        - Express
-        - Morgan
-        - Json webToken
-        - Bcrypt
-        - Nodemon
+        - Mysql.
+        - Sharp.
+        - Express.
+        - Json webToken.
+        - Morgan.
+        - Nodemon.
+        - Uuid.
+        - @sendgrid/mail.
+        - Cors.
 
 
 
 # ---- Mejoras propuestas ----
 
-        - Confirmación mediante correo de las modificaciones realizadas al perfil.
+        - Confirmación mediante correo de las modificaciones realizadas al perfil, así como el envío de códigos mediante correo electrónico validado del cliente.
 
-        - Envío de fichero descargado mediante correo electronico (tomar de ejemplo el
-            proceso que utilizan las plataformas de empleo).
+        - Gestión de descarga de archivos.
+
+        - Modificación de los directorios y archivos creados por el usuario.
+
+        - Validación del tipo de perfil de los usuarios registrados, permitiendo así las modificaciones acorde al perfil dado.
 
 # ---- Conexión con la BBDD ----
 
-    Dentro de los archivos contenidos en el repositorio podéis econtrar el .env.config en el
-        cual podeis confirmar los datos que necesitais validar para la conexion a la BBDD. 
+    Dentro de los archivos contenidos en el repositorio podéis econtrar el .env_example en el
+        cual podeis confirmar los datos que a validar para la conexión a la BBDD. 
 
         - HOST.
         - USER.
         - PASSWORD.
         - DATABASSE.
-        - SECRET.
-        - PUBLIC_HOST.
-        - SENDGRID_API_KEY.
-        - SENDGRID_FROM.
-
+        
 En este caso se desarrolló mediante conexion local para pruebas y VPS para el codigo
 colaborativo en la BBDD.
 
-# ---- Enlaces de interés ----
 
-- Bcrypt: https://www.npmjs.com/package/bcrypt
+# ---- Otros datos de interés ----
+
+Para el funcionamiento de todo el servidor, hará falta también otros datos indicados dentro del .env_example
+
+        - SENDGRID_API_KEY.
+        - SENDGRID_FROM.
+        - PUBLIC_HOST.
+        - ROOT_DIR.
+        - SECRET_TOKEN.
+
+
+
+# ---- Enlaces ----
+
+- Morgan: https://www.npmjs.com/package/morgan
 
 - Sendgrid: https://www.npmjs.com/package/@sendgrid/mail
 
