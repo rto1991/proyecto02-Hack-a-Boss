@@ -1,3 +1,5 @@
+
+
 #                                                       ⌬⎨☁️ Mi disco duro - ONLINE ☁️⎬⌬
 
 El siguiente proyecto está siendo desarrollado por los alumnos del grupo A 📝 del Bootcamp de
@@ -9,24 +11,24 @@ Desarrollaremos distintos Endpoints que iremos explicando en adelante con detall
 
 #  ---- Alcance requerido ----
 
-     1️⃣- Se desarrrolla un servidor capaz de crear carpetas y almacenar archivos.
+     1️⃣ Se desarrrolla un servidor capaz de crear carpetas y almacenar archivos.
 
-     2️⃣- Se permitirá registrarse y loguearse a nuevos usuarios.
+     2️⃣ Se permitirá registrarse y loguearse a nuevos usuarios.
 
-     3️⃣- Se autoriza a las modificaciones de los perfiles registrados en algunos campos.
+     3️⃣ Se autoriza a las modificaciones de los perfiles registrados en algunos campos.
 
-     4️⃣- Se validan los perfiles mediante password y token.
+     4️⃣ Se validan los perfiles mediante password y token.
 
-     5️⃣- Se agregan / borran archivos solo para perfiles registrados.
+     5️⃣ Se agregan / borran archivos solo para perfiles registrados.
 
+# ---- Desarrollos ----
 
-## Modulos, Endpoints y Middlewares.
-    - Middlewares
-        - Para verificacion de rutas desconocidas. 🛑🛑🛑 no está en la main, PREGUNTAR. 🛑🛑🛑
+## Middlewares
+        🤷🏼 Verificacion de rutas desconocidas.
 
-    - Endpoints:
+## Endpoints:
 
-        🔵 Users:
+        🧑🏻‍💻 Users:
             - GET ** /user/:id ➡️ Ver datos de usuarios logueados.
             - POST ** /newUser ➡️ Registro de nuevo usuario. ** Acceso para usuarios anónimos.
             - PATCH ** /updateUser/:id ➡️ Actualizar datos del usuario según su perfil.
@@ -37,7 +39,7 @@ Desarrollaremos distintos Endpoints que iremos explicando en adelante con detall
             - POST ** /users/recoverPassword ➡️ Recuperación de password con validación token.
             - POST ** /users/resetPassword ➡️ Modificación de token registrado para modificación de password.
 
-        🔵 Files:
+        🗂️ Files:
             - GET ** /makeFolder/:folderName ➡️ Creación de carpetas a usuarios validados.
             - GET ** /getCurrentFolder ➡️ Nos indica el directorio en el cual nos encontramos ubicados.
             - GET ** /dir ➡️ Listar todos los archivos contenidos en el usuario validado.
@@ -49,7 +51,7 @@ Desarrollaremos distintos Endpoints que iremos explicando en adelante con detall
             - DELETE ** /file/:fileName ➡️ Borrado de ficheros contenidos en los directorios.
             - GET ** /download/:fileId ➡️ Descarga del fichero seleccionado.
 
-    - Módulos instalados para el funcionamiento del servidor
+## Módulos instalados para el funcionamiento del servidor
         - Mysql.
         - Sharp.
         - Express.
@@ -64,13 +66,13 @@ Desarrollaremos distintos Endpoints que iremos explicando en adelante con detall
 
 # ---- Mejoras propuestas ----
 
-        - Confirmación mediante correo de las modificaciones realizadas al perfil, así como el envío de códigos mediante correo electrónico validado del cliente.
+        📨 Confirmación mediante correo de las modificaciones realizadas al perfil, así como el envío de códigos mediante correo electrónico validado del cliente.
 
-        - Gestión de descarga de archivos.
+        ⬇️ Gestión de descarga de archivos.
 
-        - Modificación de los directorios y archivos creados por el usuario.
+        📂 Modificación de los directorios y archivos creados por el usuario.
 
-        - Validación del tipo de perfil de los usuarios registrados, permitiendo así las modificaciones acorde al perfil dado.
+        ⚠ Validación del tipo de perfil de los usuarios registrados, permitiendo así las modificaciones acorde al perfil dado.
 
 # ---- Conexión con la BBDD ----
 
