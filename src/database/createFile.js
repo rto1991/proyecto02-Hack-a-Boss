@@ -9,7 +9,6 @@ const createFile = async (req, res, next) => {
     try {
         connection = await getConnection();
 
-        // aqui explota de momento
         await connection.query(
             `INSERT INTO probando2 (id_probando, fileName)
             VALUES(?,?)`,

@@ -1,5 +1,13 @@
 'use strict';
 
+/*
+
+esta ruta está en desarrollo porque para que funcione al 100% habría
+además que aplicar otro endpoint en el cual se permita la creación
+del archivo.
+
+*/
+
 const { newError } = require('../../../helps');
 const jwt = require('jsonwebtoken');
 const { getConnection } = require('../../database');
@@ -48,16 +56,10 @@ const uploadFileAnonimous = async (req, res, next, email) => {
             );
             connections.release();
 
-            /*
-
-            Aquí podría validar ahora el archivo que se sube y guardarlo
-
-            */
-
             res.send({
                 status: "ok",
                 message:
-                    "Clave validada correctamente, el archivo se ha subido a tu cloud",
+                    "Clave validada correctamente",
                 });
             
                 const { authorization } = req.headers;
