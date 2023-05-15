@@ -1,4 +1,4 @@
-'use estrict';
+'use strict';
 
 const { newError } = require('../../helps');
 const jwt = require('jsonwebtoken');

@@ -1,4 +1,4 @@
-'use estrict';
+'use strict';
 
 const { getUserId } = require('./getUserId');
 const { registerNewUser } = require('./registerNewUser'); 

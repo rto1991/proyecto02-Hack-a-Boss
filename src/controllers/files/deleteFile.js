@@ -1,4 +1,4 @@
-'use estrict';
+'use strict';
 
 const deleteFile = async (req, res, next) => {
     try {

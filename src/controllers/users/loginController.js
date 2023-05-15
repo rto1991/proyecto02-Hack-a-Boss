@@ -1,4 +1,4 @@
-'use estrict';
+'use strict';
 
 const { getUserEmail } = require('../../database/getUserEmail');
 const bcrypt = require('bcrypt');

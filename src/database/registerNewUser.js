@@ -1,4 +1,4 @@
-'use estrict';
+'use strict';
 
 const { getConnection } = require('./getConnection');
 const {newError} = require('../../helps');

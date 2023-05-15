@@ -1,4 +1,4 @@
-'use estrict';
+'use strict';
 
 const listFiles = async (req, res, next) => {
     try {

@@ -1,4 +1,4 @@
-'use estrict';
+'use strict';
 
 const { listFiles } = require('./listFiles');
 const { newCarpet } = require('./newCarpet');

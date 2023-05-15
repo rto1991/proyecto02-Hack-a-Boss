@@ -1,4 +1,4 @@
-'use estrict';
+'use strict';
 
 const sgEmail = require('@sendgrid/mail');
 require('dotenv').config();

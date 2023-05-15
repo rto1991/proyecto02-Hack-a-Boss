@@ -1,4 +1,4 @@
-'use estrict';
+'use strict';
 // const fs = require('fs');
 const { newError } = require('../../../helps');
 const { createFile } = require('../../database/createFile');
