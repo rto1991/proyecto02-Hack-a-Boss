@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "cc522703-51bb-4ea1-813f-e67499c7ffe7",
+		"_postman_id": "b59170bc-65e1-42c4-925a-642ffbd82b45",
 		"name": "My Cloud Drive",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "8722607",
-		"_collection_link": "https://speeding-equinox-833319.postman.co/workspace/Team-Workspace~fa8141d8-78ee-4d94-8f20-87da6ee52b52/collection/8722607-cc522703-51bb-4ea1-813f-e67499c7ffe7?action=share&creator=8722607&source=collection_link"
+		"_exporter_id": "8722607"
 	},
 	"item": [
 		{
@@ -17,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mail\": \"informaticabocanegra@gmail.com\",\r\n    \"pwd\": \"T0d0p3rr4$\"\r\n}",
+							"raw": "{\r\n    \"mail\": \"hola@informaticabocanegra.com\",\r\n    \"pwd\": \"T0d0p3rr4$\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -74,12 +73,12 @@
 						"header": [
 							{
 								"key": "authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2ODM0OTA0MDgsImV4cCI6MTY4MzU3NjgwOH0.Xk0doL0I7JtIvod1X0koY5VIBk_cdTRS5iBnpAQnQDw",
+								"value": "{{TOKEN}}",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/user/10",
+							"raw": "http://localhost:3000/user/22",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -87,7 +86,7 @@
 							"port": "3000",
 							"path": [
 								"user",
-								"10"
+								"22"
 							]
 						}
 					},
@@ -100,21 +99,16 @@
 						"header": [
 							{
 								"key": "authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2ODM0OTA0MDgsImV4cCI6MTY4MzU3NjgwOH0.Xk0doL0I7JtIvod1X0koY5VIBk_cdTRS5iBnpAQnQDw",
+								"value": "{{TOKEN}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Mario\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\r\n    \"name\": \"Mario\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3000/updateUser/10",
+							"raw": "http://localhost:3000/updateUser/22",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -122,7 +116,7 @@
 							"port": "3000",
 							"path": [
 								"updateUser",
-								"10"
+								"22"
 							]
 						}
 					},
@@ -132,7 +126,13 @@
 					"name": "Cambiar Contraseña Usuario",
 					"request": {
 						"method": "PATCH",
-						"header": [],
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"mail\": \"informaticabocanegra@gmail.com\",\r\n    \"oldPwd\": \"T0d0p3rr4$\",\r\n    \"newPwd\": \"T0d0p3rr4k4$\"\r\n}",
@@ -162,7 +162,13 @@
 					"name": "Generar código de recuperación de password",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"mail\": \"informaticabocanegra@gmail.com\"\r\n}",
@@ -418,7 +424,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fileId\":\"36\",\r\n    \"destinationFolderName\": \"documentos\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -56,12 +56,12 @@ const postUser = async (req, res) => {
         "Carpeta Root",
         "/",
         1,
-        path.join(process.env.ROOT_DIR,userId),
+        path.join(process.env.ROOT_DIR, userId + ""),
       ]
     );
 
     //creamos la carpeta física en el disco en el direcotorio estático
-    await fs.mkdir(process.env.ROOT_DIR + userId);
+    await fs.mkdir(path.join(process.env.ROOT_DIR, userId + ""));
 
     let fileId = files.insertId; // obtenemos la ID de fila insertada en la la tabla files, pues necesitamos dicha ID para actualizar el campo currentFolder en la tabla users
     await connect.query(`UPDATE users SET currentFolder_id=? WHERE id=?`, [
