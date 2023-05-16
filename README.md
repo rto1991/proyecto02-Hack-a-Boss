@@ -102,14 +102,23 @@ funcionamiento del proyecto.
             - GET ** /recoverFile/:fileName ➡️ Recuperar un fichero de la papelera.
 
 ## Módulos instalados para el funcionamiento del servidor
+        
         - Mysql.
+        
         - Sharp.
+        
         - Express.
+        
         - Json webToken.
+        
         - Morgan.
+        
         - Nodemon.
+        
         - Uuid.
+        
         - @sendgrid/mail.
+        
         - Cors.
 
 
@@ -129,32 +138,37 @@ funcionamiento del proyecto.
 # ---- *******Conexión con la BBDD******* ----
 
     Dentro de los archivos contenidos en el repositorio debéis utilizar el fichero myclouddrive.sql
-    para crear la base de datos también podéis econtrar el .env_example en el cual podéis confirmar
-    los datos a validar para la conexión a la BBDD. 
+    para crear la base de datos; también podéis econtrar el .env_example, en el cual podéis confirmar
+    los datos necesarios para la conexión a la BBDD. 
 
         - HOST.
         - USER.
         - PASSWORD.
         - DATABASSE.
         
-En este caso se desarrolló mediante conexion local para pruebas y VPS para el codigo
+En este caso se desarrolló mediante conexión local para pruebas y VPS para el código
 colaborativo en la BBDD.
 
 
 
 
-# ---- Intrucciones ----
+# ---- Instrucciones ----
 
-Para el funcionamiento de todo el servidor, hará falta también otros datos indicados dentro del .env_example,
-dentro de dicho archivo tenéis el contenido necesario a aplicar para cada campo.
+Para el funcionamiento de todo el servidor, hará falta también otros datos indicados dentro del .env_example.
+
+Dentro de dicho archivo tenéis el contenido necesario a aplicar para cada campo:
 
         - SENDGRID_API_KEY.
+        
         - SENDGRID_FROM.
+        
         - PUBLIC_HOST.
+        
         - ROOT_DIR.
+        
         - SECRET_TOKEN.
 
-Adicionalmente para el funcionamiento debéis:
+*Pasos sugeridos a seguir para el correcto funcionamiento del servidor:*
 
     1️⃣ Instalar módulos.
 
@@ -165,7 +179,7 @@ Adicionalmente para el funcionamiento debéis:
     4️⃣ A empezar con los testings! 👍🏼
 
 PD: Al momento de registrar un usuario debéis realizarlo con un mail válido,
-debido a que mediante este se enviarán claves y datos sencibles.
+debido a que mediante este se enviarán claves y datos sencibles ⚠️.
 
 
 # ---- Enlaces ----
@@ -195,3 +209,4 @@ debido a que mediante este se enviarán claves y datos sencibles.
 
 # [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white&labelColor=101010)]()
 
+# <img width="114" alt="img_123_" src="https://github.com/rto1991/proyecto02-Hack-a-Boss/assets/123706095/cca98819-db13-4f4d-ab25-918de9d27064">
