@@ -8,7 +8,7 @@ const listDirectory = async (req, res) => {
     //obtenemos el path actual donde se encuentra el usuario
     const [pathUser] = await connect.query(
       `
-      SELECT f.filename FROM users u INNER JOIN files f ON f.id = u.currentFolder_id WHERE u.id = ?`,
+      SELECT f.filename, u.role FROM users u INNER JOIN files f ON f.id = u.currentFolder_id WHERE u.id = ?`,
       [idUser]
     );
 
