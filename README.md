@@ -142,7 +142,8 @@ colaborativo en la BBDD.
 
 
 
-# ---- Otros datos de interés ----
+
+# ---- Intrucciones ----
 
 Para el funcionamiento de todo el servidor, hará falta también otros datos indicados dentro del .env_example,
 dentro de dicho archivo tenéis el contenido necesario a aplicar para cada campo.
@@ -153,8 +154,19 @@ dentro de dicho archivo tenéis el contenido necesario a aplicar para cada campo
         - ROOT_DIR.
         - SECRET_TOKEN.
 
-Adicionalmente podéis ubicar el archivo de nombre xxxx el cual contiene los tester realizados para el correcto
-funcionamiento del servicio.
+Adicionalmente para el funcionamiento debéis:
+
+    1️⃣ Instalar módulos.
+
+    2️⃣ Conectar a la BBDD con los datos indicados.
+
+    3️⃣ Crear rutas con los endpoints en Postman.
+
+    4️⃣ A empezar con los testings! 👍🏼
+
+PD: Al momento de registrar un usuario debéis realizarlo con un mail válido,
+debido a que mediante este se enviarán claves y datos sencibles.
+
 
 # ---- Enlaces ----
 
