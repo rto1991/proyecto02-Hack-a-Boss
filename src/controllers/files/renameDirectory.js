@@ -9,8 +9,8 @@ const renameDirectory = async (req, res) => {
     //definimos las constantes necesarias para realizar la operación
     const userInfo = req.userInfo; //aquí nos traemos la info del usuario
     const idUser = userInfo.id;
-    const folderName = req.params.folderName; //aquí nos traemos el nombre de carpeta deseado
-    const newName = req.body.newName; //aquí nos traemos el nuevo nombre para la carpeta
+    const folderName = req.params.oldName; //aquí nos traemos el nombre de carpeta a la que queremos cambiar el nombre
+    const newName = req.params.newName; //aquí nos traemos el nuevo nombre para la carpeta
     const connect = await getDB();
     const [user] = await connect.query(`SELECT * FROM users WHERE id = ?`, [
       idUser,
@@ -39,21 +39,20 @@ const renameDirectory = async (req, res) => {
       return res
         .status(500)
         .send(
-          `Ya existe una carpeta con el nombre ${newName} en el directorio actual.`
+          `No podemos renombrar la carpeta, ya existe una carpeta con el nombre ${newName} en el directorio actual.`
         );
     }
 
     //renombramos la carpeta en la BD
-    const newPath = folder[0].filePath.replace(folderName + "/", newName + "/");
     await connect.query(
-      "UPDATE files SET fileName = ?, filePath = ?, date_upd = ? WHERE id = ?",
-      [newName, newPath, new Date(), folder[0].id]
+      "UPDATE files SET fileName = ?, date_upd = ? WHERE id = ?",
+      [newName, new Date(), folder[0].id]
     );
 
     //renombramos la carpeta en el sistema de archivos
     await fs.rename(
-      path.join(process.env.ROOT_DIR, idUser.toString(), folder[0].filePath),
-      path.join(process.env.ROOT_DIR, idUser.toString(), newPath)
+      path.join(process.env.ROOT_DIR, idUser.toString(), folder[0].filePath,folderName),
+      path.join(process.env.ROOT_DIR, idUser.toString(), folder[0].filePath,newName)
     );
 
     //enviamos respuesta de que la operación finalizó correctamente

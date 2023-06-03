@@ -14,7 +14,7 @@ const deleteDirectory = async (req, res) => {
 
     //debemos comprobar en que directorio estamos exactamente
     const [user] = await connect.query(
-      `SELECT u.*, f.filePath FROM users u INNER JOIN files f ON f.id = u.currentFolder_id WHERE u.id = ?`,
+      `SELECT u.*, f.fileName, f.filePath FROM users u INNER JOIN files f ON f.id = u.currentFolder_id WHERE u.id = ?`,
       [idUser]
     );
     const currentFolder_id = user[0].currentFolder_id;
@@ -60,7 +60,7 @@ const deleteDirectory = async (req, res) => {
     );
     const currentPath = user[0].filePath; //en la consulta primera que compruebo la ruta donde estoy, me traigo ya de paso el filePath de la tabla "files" enlazando por currentFolder_id de la tabla "users"
     await fs.rmdir(
-      process.env.ROOT_DIR + "\\" + idUser + currentPath + folderName
+      path.join(currentPath , folderName)
     );
 
     //Si el borrado de la carpeta en el filesystem no da error, continuar borrando de la BD
@@ -70,7 +70,7 @@ const deleteDirectory = async (req, res) => {
     res
       .status(200)
       .send(
-        `La carpeta "${folderName}" se borró correctamente de la ruta "${currentPath}"`
+        `La carpeta "${folderName}" se borró correctamente de la carpeta "${user[0].fileName}"`
       );
   } catch (error) {
     console.log(error);

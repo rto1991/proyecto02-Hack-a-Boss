@@ -14,18 +14,18 @@ const {
   changeDirectory,
   deleteDirectory,
   renameDirectory,
+  uploadFile,
   moveFile,
   deleteFile,
-  downloadFile,
+  downloadfile,
   renameFile,
   moveToTrash,
-  emptyTrash,
   recoverFile,
+  emptyTrash,
 } = require("../controllers/files");
 
 //estos middles nos hará falta para operar con los ficheros ya que los usuarios han de estar logueados para manejar las rutas
 const isUser = require("../middlewares/isUser");
-const emptyTrash = require("../controllers/files/emptyTrash");
 //const userExists = require("../middlewares/userExists");
 
 const router = express.Router();
@@ -35,13 +35,13 @@ router.get("/getCurrentFolder", isUser, getCurrentFolder);
 router.get("/dir", isUser, listDirectory);
 router.get("/cd/:destinationDirectory", isUser, changeDirectory);
 router.get("/rd/:directoryToDelete", isUser, deleteDirectory);
-router.get("/renameDirectory", isUser, renameDirectory);
+router.get("/renameDirectory/:oldName/:newName", isUser, renameDirectory);
+router.post("/uploadFile", isUser, uploadFile);
 router.post("/moveFile", isUser, moveFile);
-router.delete("/files/:fileName", isUser, deleteFile);
-router.get("/download/:fileName", isUser, downloadFile);
-router.post("/files/:filesId", isUser, renameFile);
-router.post("/files/:parentDirId/:fileName/moveToTrash", isUser, moveToTrash);
-router.delete("/emptyTrash/trash", isUser, emptyTrash);
-router.put("/recoverFile/:fileName/:parentDirID", isUser, recoverFile);
-
+router.delete("/file/:fileName", isUser, deleteFile);
+router.get("/download/:fileId", isUser, downloadfile);
+router.post("/renameFile", isUser, renameFile);
+router.get("/moveToTrash/:fileName", isUser, moveToTrash);
+router.get("/recoverFile/:fileName", isUser, recoverFile);
+router.get("/emptyTrash", isUser, emptyTrash);
 module.exports = router;

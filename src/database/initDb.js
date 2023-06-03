@@ -1,6 +1,7 @@
 "use strict";
 
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
+
 
 const { HOST, USER, PASSWORD, DATABASE } = process.env;
 
@@ -13,7 +14,7 @@ const connection = mysql.createPool({
 
 async function createTables() {
   try {
-    await connection.promise().execute(
+    await connection.query(
       `CREATE TABLE IF NOT EXISTS users (
         id int unsigned NOT NULL AUTO_INCREMENT,
         date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -33,7 +34,7 @@ async function createTables() {
     );
     console.log("Tabla Users creada");
 
-    await connection.promise().execute(
+    await connection.query(
       `CREATE TABLE IF NOT EXISTS files (
         id int unsigned NOT NULL AUTO_INCREMENT,
         id_user int(11) unsigned NOT NULL DEFAULT(0),
@@ -45,13 +46,14 @@ async function createTables() {
         is_folder tinyint(1) DEFAULT '0',
         is_public tinyint(1) DEFAULT '0',
         in_recycle_bin tinyint(1) DEFAULT '0',
+        size INT (11) DEFAULT '0',
         PRIMARY KEY (id),
         FOREIGN KEY (id_user) REFERENCES users(id)
       ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci`
     );
     console.log("Tabla files creada");
 
-    await connection.promise().execute(
+    await connection.query(
       `CREATE TABLE IF NOT EXISTS logs (
         id INT unsigned NOT NULL AUTO_INCREMENT,
         id_user INT(11) UNSIGNED NOT NULL DEFAULT (0),
