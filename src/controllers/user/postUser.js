@@ -63,7 +63,7 @@ const postUser = async (req, res) => {
     } catch (error) {
       await fs.mkdir(process.env.ROOT_DIR);
     }
-
+    console.log(role, userId);
     if (role == "normal") {
       await fs.mkdir(path.join(process.env.ROOT_DIR, userId + ""));
     }
